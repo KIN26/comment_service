@@ -1,0 +1,253 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-12 09:11+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: project/apps/account/tasks.py:13
+msgid "Registration on the comment service"
+msgstr ""
+
+#: project/apps/account/views.py:28
+msgid ""
+"Your account was created successfully, the link to its activation was sent "
+"to your email"
+msgstr ""
+
+#: project/apps/account/views.py:51
+msgid "Activation error"
+msgstr ""
+
+#: project/apps/account/views.py:53
+msgid "Your account is activated"
+msgstr ""
+
+#: project/apps/comment/comment_api/serializers.py:38
+msgid "api:comment:detail"
+msgstr ""
+
+#: project/apps/comment/comment_api/serializers.py:51
+msgid "api:comment:descendants"
+msgstr ""
+
+#: project/apps/comment/notify.py:23
+msgid "To the post to which you subscribed was deleted comment"
+msgstr ""
+
+#: project/apps/comment/notify.py:25
+msgid "To the post to which you subscribed was edited comment"
+msgstr ""
+
+#: project/apps/comment/notify.py:27
+msgid "To the post to which you subscribed was created comment"
+msgstr ""
+
+#: project/apps/comment/views.py:98
+msgid "Comment has been deleted"
+msgstr ""
+
+#: project/apps/post/models.py:10
+msgid "Title"
+msgstr ""
+
+#: project/apps/post/models.py:11
+msgid "Text"
+msgstr ""
+
+#: project/apps/post/models.py:14
+msgid "Date of publication"
+msgstr ""
+
+#: project/apps/post/models.py:18
+msgid "Date of update"
+msgstr ""
+
+#: project/apps/post/models.py:46
+msgid "Blog"
+msgstr ""
+
+#: project/apps/post/models.py:47 project/apps/post/views.py:28
+#: templates/menu.html:7
+msgid "Blogs"
+msgstr ""
+
+#: project/apps/post/models.py:54 project/apps/post/models.py:55
+#: project/apps/post/views.py:41 templates/menu.html:6
+msgid "News"
+msgstr ""
+
+#: project/apps/post/post_api/serializers.py:12
+#, python-brace-format
+msgid "api:post:{0}:detail"
+msgstr ""
+
+#: project/apps/post/post_api/serializers.py:36
+msgid "api:comment:list"
+msgstr ""
+
+#: project/apps/post/views.py:29
+msgid "List of blogs"
+msgstr ""
+
+#: project/apps/post/views.py:42
+msgid "List of news"
+msgstr ""
+
+#: templates/account/email.html:2
+#, python-format
+msgid ""
+"<p>Hello, %(username)s! Thank you for registration.</p><p>To complete it you "
+"need to activate your account.</p><p>To activate it you need go to this <a "
+"href=\"http://%(url)s?token=%(token)s\">link</a></p>"
+msgstr ""
+
+#: templates/account/login.html:3 templates/account/login.html:6
+#: templates/menu.html:14
+msgid "Login"
+msgstr ""
+
+#: templates/account/login.html:17 templates/account/register.html:10
+#: templates/post/detail.html:72 templates/post/detail.html:95
+msgid "Submit"
+msgstr ""
+
+#: templates/account/register.html:3 templates/account/register.html:6
+msgid "Registration"
+msgstr ""
+
+#: templates/base.html:9
+msgid "Comment Service"
+msgstr ""
+
+#: templates/base.html:26 templates/base.html:36 templates/post/detail.html:56
+#: templates/post/detail.html:71 templates/post/detail.html:81
+#: templates/post/detail.html:94
+msgid "Close"
+msgstr ""
+
+#: templates/base.html:29
+msgid "Notification"
+msgstr ""
+
+#: templates/comment/list.html:7
+msgid "More comments"
+msgstr ""
+
+#: templates/comment/partials/archive_item.html:5
+msgid "Файл еще не готов пожалуйста пождите..."
+msgstr ""
+
+#: templates/comment/partials/item.html:7
+msgid "Reply"
+msgstr ""
+
+#: templates/comment/partials/item.html:10
+msgid "Edit"
+msgstr ""
+
+#: templates/comment/partials/item.html:15
+msgid "Delete"
+msgstr ""
+
+#: templates/comment/reports.html:3 templates/comment/reports.html:5
+#: templates/menu.html:11
+msgid "Reports"
+msgstr ""
+
+#: templates/comment/reports.html:8
+msgid "Format"
+msgstr ""
+
+#: templates/comment/reports.html:16
+msgid "Start date"
+msgstr ""
+
+#: templates/comment/reports.html:20
+msgid "End date"
+msgstr ""
+
+#: templates/comment/reports.html:24
+msgid "Type"
+msgstr ""
+
+#: templates/comment/reports.html:34
+msgid "Object"
+msgstr ""
+
+#: templates/comment/reports.html:39
+msgid "Get the report"
+msgstr ""
+
+#: templates/comment/reports.html:42
+msgid "Archive"
+msgstr ""
+
+#: templates/comment/reports.html:46
+msgid "File"
+msgstr ""
+
+#: templates/comment/reports.html:47
+msgid "Status"
+msgstr ""
+
+#: templates/comment/reports.html:55
+msgid "There are no reports"
+msgstr ""
+
+#: templates/index.html:3 templates/menu.html:5
+msgid "Main page"
+msgstr ""
+
+#: templates/index.html:5
+msgid "Latest news"
+msgstr ""
+
+#: templates/index.html:6
+msgid "Latest blogs"
+msgstr ""
+
+#: templates/menu.html:12
+msgid "Logout"
+msgstr ""
+
+#: templates/menu.html:15
+msgid "Regestration"
+msgstr ""
+
+#: templates/post/detail.html:17 templates/post/detail.html:25
+msgid "Subscribe"
+msgstr ""
+
+#: templates/post/detail.html:18 templates/post/detail.html:23
+msgid "Unsubscribe"
+msgstr ""
+
+#: templates/post/detail.html:29 templates/post/detail.html:59
+msgid "Add comment"
+msgstr ""
+
+#: templates/post/detail.html:44
+msgid "No comments"
+msgstr ""
+
+#: templates/post/detail.html:84
+msgid "Edit comment"
+msgstr ""
+
+#: templates/post/partials/list.html:17
+msgid "There are no records"
+msgstr ""

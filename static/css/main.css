@@ -1,0 +1,72 @@
+.font-bold {
+    font-weight: bold;
+}
+
+ul.messages, ul.errorlist {
+    padding: 0;
+}
+
+ul.messages li, ul.errorlist li {
+    list-style: none;
+}
+
+ul.messages li.success {
+    color: green;
+}
+
+ul.errorlist li, ul.messages li.error {
+    color: red;
+}
+
+div.comments-container-header {
+    margin: 25px 0 0 0;
+    padding: 25px 0 0 0;
+    border-top: 1px solid #333;
+}
+
+div.comments-itm {
+    margin: 10px 0 30px 0;
+}
+
+div.comments-itm div.comments-itm-header {
+    padding: 0 0 10px 0;
+    margin: 0 0 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+div.comments-container-body {
+    margin-top: 50px;
+}
+
+.comments-itm-lnk {
+    color: #337ab7 !important;
+    margin: 0 0 0 5px;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.comments-itm-children {
+    padding: 0 25px 0 25px;
+    border-left: 1px dashed #333;
+    display: none;
+}
+
+.comments-itm-get-children:after {
+    font-family: 'Glyphicons Halflings'; /* essential for enabling glyphicon */
+    content: "\e080";
+}
+
+.comments-itm-get-children.active:after {
+    content: "\e114";
+}
+
+.inactive {
+    color: gray !important;
+    cursor: not-allowed;
+}
+
+.notification-comment-body {
+    background-color: #cccccc;
+    padding: 10px;
+    margin: 10px 0 0 0;
+}

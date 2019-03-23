@@ -1,0 +1,52 @@
+version: '2'
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: DockerFile
+    restart: always
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - db
+      - redis
+    ports:
+      - '8000:8000'
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: comment_service
+    ports:
+      - '3306:3306'
+  redis:
+    restart: always
+    image: redis:latest
+    ports:
+      - "6379:6379"
+  celery_low:
+    build:
+      context: .
+      dockerfile: DockerFile
+    command: celery worker -A project -n low_worker -Q low -c 1 --loglevel=INFO
+    depends_on:
+      - redis
+      - rabbitmq
+  celery_normal:
+    build:
+      context: .
+      dockerfile: DockerFile
+    command: celery worker -A project -n normal_worker -Q normal -c 1 --loglevel=INFO
+    depends_on:
+      - redis
+      - rabbitmq
+  rabbitmq:
+    restart: always
+    image: rabbitmq:latest
+    ports:
+      - "5672:5672"
+    environment:
+      RABBITMQ_USER: guest
+      RABBUTMQ_PASSWORD: guest

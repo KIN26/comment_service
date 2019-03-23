@@ -1,0 +1,8 @@
+{% load i18n %}
+{% for item in data %}
+    {% include 'comment/partials/item.html' with children_cnt=item.children_cnt %}
+{% endfor %}
+{% if data.has_next %}
+    <a href="{% url 'comment:paginate' content_type_id object_id data.next_page_number %}"
+       class="show text-center comments-paginate-link">{% trans 'More comments' %}</a>
+{% endif %}

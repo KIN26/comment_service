@@ -1,0 +1,2 @@
+{% load i18n %}
+{% blocktrans with username=username url=url token=token %}<p>Hello, {{ username }}! Thank you for registration.</p><p>To complete it you need to activate your account.</p><p>To activate it you need go to this <a href="http://{{ url }}?token={{ token }}">link</a></p>{% endblocktrans %}

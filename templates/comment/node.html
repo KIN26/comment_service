@@ -1,0 +1,3 @@
+{% for item in data.values %}
+    {% include 'comment/partials/item.html' with children_cnt=item.children|length %}
+{% endfor %}

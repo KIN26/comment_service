@@ -1,0 +1,19 @@
+{% load i18n %}
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li><a href="{% url 'index_page' %}">{% trans 'Main page' %}</a></li>
+            <li><a href="{% url 'post:news:list' %}">{% trans 'News' %}</a></li>
+            <li><a href="{% url 'post:blog:list' %}">{% trans 'Blogs' %}</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            {% if request.user.is_authenticated %}
+                <li><a href="{% url 'comment:reports:index' %}">{% trans 'Reports' %}</a></li>
+                <li><a href="{% url 'account:logout' %}">{% trans 'Logout' %}</a></li>
+            {% else %}
+                <li><a href="{% url 'account:login' %}">{% trans 'Login' %}</a></li>
+                <li><a href="{% url 'account:register' %}">{% trans 'Regestration' %}</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

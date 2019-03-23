@@ -1,0 +1,5 @@
+[MASTER]
+ignore=tests.py
+
+[MESSAGES CONTROL]
+disable=R0901,R0903,C0103,C0111,unused-argument

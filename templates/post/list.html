@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    {% include 'post/partials/list.html' with data=posts item_url=item_url page_title=page_title %}
+{% endblock %}
+

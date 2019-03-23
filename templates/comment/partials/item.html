@@ -1,0 +1,31 @@
+{% load i18n %}
+<div class="comments-itm" id="comment{{ item.id }}">
+    <div class="comments-itm-header">
+        <div class="comments-itm-icons pull-right">
+            {% if user.is_authenticated %}
+                <a href="#" class="comments-itm-lnk" data-toggle="modal" data-target="#add-comment-popup"
+                   data-parent="{{ item.id }}">{% trans 'Reply' %}</a>
+                {% if item.user == user or user.is_superuser %}
+                    <span data-action="{% url 'comment:update' item.id %}" data-pk="{{ item.id }}" data-toggle="modal"
+                          data-target="#edit-comment-popup" title="{% trans 'Edit' %}"
+                          class="glyphicon glyphicon-pencil comments-itm-lnk comments-itm-edt-btn"></span>
+                {% endif %}
+                {% if children_cnt == 0 or not children_cnt %}
+                    {% if item.user == user or user.is_superuser %}
+                        <a href="{% url 'comment:delete' item.id %}" title="{% trans 'Delete' %}"
+                           class="glyphicon glyphicon-remove comments-itm-rem-btn comments-itm-lnk"></a>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+            {% if children_cnt > 0 %}
+                <a href="{% url 'comment:descendants' item.id %}"
+                   class="comments-itm-lnk comments-itm-get-children"></a>
+            {% endif %}
+        </div>
+        <div class="comments-itm-metadata pull-left">{{ item.user }} ({{ item.created_at|date:'d.m.Y H:i:s' }})</div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="comments-itm-txt">{{ item.body }}</div>
+    <div class="comments-itm-children">{% if children_cnt > 0 and item.children %}
+        {% include 'comment/node.html' with data=item.children %}{% endif %}</div>
+</div>

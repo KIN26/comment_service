@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Reports' %}{% endblock %}
+{% block content %}
+    <h1>{% trans 'Reports' %}</h1>
+    <form method="POST" action="{% url 'comment:reports:index' %}" id="comment-report-form">
+        <div class="form-group">
+            <label for="format">{% trans 'Format' %}</label>
+            <select id="format" class="form-control" name="format">
+                {% for key, val in formats %}
+                    <option value="{{ val }}">{{ val }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="date_from">{% trans 'Start date' %}</label>
+            <input id="date_from" class="form-control" name="date_from" type="date"/>
+        </div>
+        <div class="form-group">
+            <label for="date_till">{% trans 'End date' %}</label>
+            <input id="date_till" class="form-control" name="date_from" type="date"/>
+        </div>
+        <div class="form-group">
+            <label for="content_type">{% trans 'Type' %}</label>
+            <select id="content_type" class="form-control" name="content_type">
+                <option value="0">----------</option>
+                {% for content_type_id, name in content_types.items %}
+                    <option value="{{ content_type_id }}"
+                            data-url="{% url 'comment:reports:content_type_objects' content_type_id %}">{{ name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="object_id">{% trans 'Object' %}</label>
+            <select id="object_id" class="form-control" name="object_id">
+                <option value="0">----------</option>
+            </select>
+        </div>
+        <button type="submit" id="report-button" class="btn btn-primary">{% trans 'Get the report' %}</button>
+    </form>
+    <br>
+    <h2>{% trans 'Archive' %}</h2>
+    <table class="table" id="report_archive">
+        <thead>
+        <tr>
+            <th>{% trans 'File' %}</th>
+            <th class="text-center">{% trans 'Status' %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in archive %}
+            {% include 'comment/partials/archive_item.html' %}
+            {% empty %}
+            <tr id="empty_reports">
+                <td colspan="2" class="text-center">{% trans 'There are no reports' %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if is_paginated %}
+        <ul class="pagination">
+            {% for i in paginator.page_range %}
+                {% if page_obj.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                {% else %}
+                    <li><a href="{% url 'comment:reports:paginate' i %}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

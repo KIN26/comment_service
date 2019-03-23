@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Main page' %}{% endblock %}
+{% block content %}
+    {% trans 'Latest news' as news_title %}
+    {% trans 'Latest blogs' as blog_title %}
+    {% include 'post/partials/list.html' with data=news item_url='post:news:detail' page_title=news_title %}
+    {% include 'post/partials/list.html' with data=blogs item_url='post:blog:detail' page_title=blog_title %}
+{% endblock %}

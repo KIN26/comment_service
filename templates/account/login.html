@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Login' %}{% endblock %}
+{% block content %}
+    <div class="row">
+        <h1>{% trans 'Login' %}</h1>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <form action="{% url 'account:login' %}" method="POST" id="login-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" id="login-user-btn" class="btn btn-success">{% trans 'Submit' %}</button>
+        </form>
+    </div>
+{% endblock %}

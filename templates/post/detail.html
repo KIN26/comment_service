@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{{ post.head }}{% endblock %}
+{% block content %}
+    <div class="row">
+        <small>{{ post.created_at }}</small>
+        <h1>{{ post.head }}</h1>
+        <div class="text">{{ post.body }}</div>
+        <div class="comments-row">
+            <div class="comments-container-header">
+                {% if user.is_authenticated %}
+                    <a
+                            href="#"
+                            data-command="{{ subscribe|yesno:"unsubscribe,subscribe" }}"
+                            data-content_type_id="{{ content_type_id }}"
+                            data-object_id="{{ post.pk }}"
+                            data-subscribe_title="{% trans 'Subscribe' %}"
+                            data-unsubscribe_title="{% trans 'Unsubscribe' %}"
+                            class="comment-subscribe-lnk"
+                            id="subscribe-lnk"
+                    >
+                        {% if subscribe %}
+                            {% trans 'Unsubscribe' %}
+                        {% else %}
+                            {% trans 'Subscribe' %}
+                        {% endif %}
+                    </a>
+                    <a href="#" class="pull-right" data-toggle="modal" data-target="#add-comment-popup"
+                       data-parent="0">{% trans 'Add comment' %}</a>
+                    <div class="clearfix"></div>
+                {% endif %}
+            </div>
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <div class="comments-container-body">
+                {% if comments|length > 0 %}
+                    {% include 'comment/list.html' with data=comments content_type_id=content_type_id object_id=post.pk %}
+                {% else %}
+                    <div class="comments-empty-msg"><strong>{% trans 'No comments' %}</strong></div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block popup %}
+    {% if user.is_authenticated %}
+        <div class="modal fade" id="add-comment-popup" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="{% trans 'Close' %}">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">{% trans 'Add comment' %}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" class="add-comment-form"
+                              action="{% url 'comment:create' content_type_id post.pk %}">
+                            {% csrf_token %}
+                            <textarea class="form-control" rows="6" required></textarea>
+                            <input class="comment-patent-id" type="hidden"/>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default"
+                                data-dismiss="modal">{% trans 'Close' %}</button>
+                        <button type="button" class="btn btn-primary add-comment-btn">{% trans 'Submit' %}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="edit-comment-popup" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="{% trans 'Close' %}">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">{% trans 'Edit comment' %}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" class="edit-comment-form" action="">
+                            <textarea class="form-control" rows="6" required></textarea>
+                            <input type="hidden">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default"
+                                data-dismiss="modal">{% trans 'Close' %}</button>
+                        <button type="button" class="btn btn-primary edit-comment-btn">{% trans 'Submit' %}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

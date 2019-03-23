@@ -1,0 +1,31 @@
+{% load post_tags %}
+{% load i18n %}
+<div class="row">
+    <h3>{{ page_title }}</h3>
+    <div class="post-list">
+        {% for row in data %}
+            <div class="post-item">
+                <div class="post-head">
+                    <div>
+                        <small>{{ row.created_at|date:'d.m.y H:i' }}</small>
+                    </div>
+                    <a class="post-link" href="{% url item_url row.pk %}">{{ row.head }}</a>
+                    <p>{{ row.body|brief }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <div class="post-empty">{% trans 'There are no records' %}</div>
+        {% endfor %}
+    </div>
+    {% if paginator and paginator.num_pages > 1 %}
+        <ul class="pagination">
+            {% for i in paginator.page_range %}
+                {% if page_obj.number == i %}
+                    <li class="active"><span>{{ i }}<span class="sr-only">(current)</span></span></li>
+                {% else %}
+                    <li><a href="{% url paginate_url page=i %}" class="paginate-link">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
